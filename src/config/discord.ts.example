@@ -1,0 +1,43 @@
+// Discord OAuth Configuration
+// IMPORTANT: Update redirectUri with your Netlify URL after deployment!
+// Example: 'https://your-site-name.netlify.app/'
+
+export const DISCORD_CONFIG = {
+  clientId: '1435409989740265512',
+  redirectUri: 'https://YOUR-SITE-NAME.netlify.app/', // UPDATE THIS AFTER DEPLOYMENT
+  scope: 'identify guilds',
+  responseType: 'code',
+};
+
+export function getDiscordAuthUrl(): string {
+  const params = new URLSearchParams({
+    client_id: DISCORD_CONFIG.clientId,
+    redirect_uri: DISCORD_CONFIG.redirectUri,
+    response_type: DISCORD_CONFIG.responseType,
+    scope: DISCORD_CONFIG.scope,
+  });
+
+  return `https://discord.com/api/oauth2/authorize?${params.toString()}`;
+}
+
+export async function getDiscordUser(accessToken: string) {
+  const response = await fetch('https://discord.com/api/users/@me', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch Discord user');
+  }
+
+  return response.json();
+}
+
+// Steps to update after deployment:
+// 1. Deploy to Netlify and get your URL (e.g., https://forerunner.netlify.app/)
+// 2. Go to https://discord.com/developers/applications/1435409989740265512
+// 3. Navigate to OAuth2 → General
+// 4. Add your Netlify URL to Redirects (include trailing slash!)
+// 5. Update the redirectUri above with your actual URL
+// 6. Commit and push - Netlify will auto-deploy

@@ -76,6 +76,13 @@ A cutting-edge web platform featuring liquid glass UI aesthetics with Discord OA
 - **`QUICK_START.md`** - Get started in 30 seconds
 - **`LOGIN_GUIDE.md`** - Complete authentication guide
 
+### For Deployment 🚀
+- **`START_HERE.md`** - ⭐ Begin deployment journey
+- **`QUICK_DEPLOY.md`** - Deploy in 2 minutes
+- **`NETLIFY_DEPLOY.md`** - Complete Netlify guide
+- **`PRE_DEPLOY_CHECKLIST.md`** - Pre-deployment testing
+- **`NETLIFY_READY.md`** - Deployment readiness status
+
 ### For Developers
 - **`DISCORD_SETUP.md`** - Discord OAuth configuration
 - **`IMPLEMENTATION_SUMMARY.md`** - Technical feature overview
@@ -314,7 +321,20 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
+
+### Deployment to Netlify 🚀
+
+**Quick Deploy** (2 minutes):
+1. `git push` to your repository
+2. Go to https://app.netlify.com/
+3. Connect repository and deploy
+4. Update Discord OAuth redirect URI
+
+**See `START_HERE.md` for complete deployment guide!**
 
 ---
 
