@@ -76,12 +76,20 @@ A cutting-edge web platform featuring liquid glass UI aesthetics with Discord OA
 - **`QUICK_START.md`** - Get started in 30 seconds
 - **`LOGIN_GUIDE.md`** - Complete authentication guide
 
+### For Discord OAuth 🔐 (DO THIS NOW!)
+- **`FIGMA_MAKE_DISCORD_QUICK.md`** - ⭐⭐⭐ **FIGMA MAKE - 2 MINUTES** - Make Discord work NOW
+- **`DISCORD_FIGMA_MAKE_SETUP.md`** - Complete Figma Make Discord guide  
+- **`QUICK_DISCORD_FIX.md`** - For localhost/local development
+- **`DISCORD_WORKS_NOW.md`** - Complete Discord OAuth guide
+- **`DISCORD_LOCALHOST_SETUP.md`** - Localhost testing setup
+
 ### For Deployment 🚀
-- **`START_HERE.md`** - ⭐ Begin deployment journey
+- **`README_DEPLOY.md`** - ⭐⭐⭐ **DEPLOY NOW** - Quick 30-second guide
+- **`FINAL_DEPLOYMENT_READY.md`** - Latest fixes & ready status
+- **`verify-deployment.md`** - One-command verification
+- **`START_HERE.md`** - Begin deployment journey
 - **`QUICK_DEPLOY.md`** - Deploy in 2 minutes
 - **`NETLIFY_DEPLOY.md`** - Complete Netlify guide
-- **`PRE_DEPLOY_CHECKLIST.md`** - Pre-deployment testing
-- **`NETLIFY_READY.md`** - Deployment readiness status
 
 ### For Developers
 - **`DISCORD_SETUP.md`** - Discord OAuth configuration

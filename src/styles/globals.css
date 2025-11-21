@@ -187,3 +187,65 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Liquid Refractive Glass Effect - Apple WWDC Style */
+@layer utilities {
+  .glass-panel {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .glass-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: inherit;
+  }
+
+  /* Glass edge reflections */
+  .glass-reflections {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 30%, transparent 70%, rgba(255,255,255,0.15) 100%);
+    mix-blend-mode: overlay;
+  }
+
+  .glass-edge {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 
+      inset 1px 1px 1px rgba(255, 255, 255, 0.5),
+      inset -1px -1px 1px rgba(255, 255, 255, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-border {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-inner-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+  }
+}

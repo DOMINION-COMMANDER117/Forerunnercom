@@ -7,12 +7,13 @@ export function LaunchCountdown() {
     hours: 0,
     minutes: 0,
     seconds: 0,
+    milliseconds: 0,
     total: 0,
   });
 
   useEffect(() => {
-    // Target: Thursday, November 6, 2025 at 1:00 PM EST (UTC-5)
-    const targetDate = new Date('2025-11-06T13:00:00-05:00');
+    // Target: Thursday, November 6, 2025 at 6:00 AM EST (UTC-5)
+    const targetDate = new Date('2025-11-06T06:00:00-05:00');
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -27,12 +28,13 @@ export function LaunchCountdown() {
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const milliseconds = Math.floor(distance % 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds, total: distance });
+      setTimeLeft({ days, hours, minutes, seconds, milliseconds, total: distance });
     };
 
     updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, 10); // Update every 10ms for milliseconds
 
     return () => clearInterval(interval);
   }, []);
@@ -81,12 +83,12 @@ export function LaunchCountdown() {
             🚀 LAUNCH DAY!
           </span>
           <span className="hidden md:inline text-white/50 text-sm">
-            Thursday, November 6, 2025 @ 1:00 PM EST
+            Thursday, November 6, 2025 @ 6:00 AM EST
           </span>
         </motion.div>
 
         {/* Countdown timer */}
-        <div className="flex gap-3 md:gap-6 items-center">
+        <div className="flex gap-2 md:gap-4 items-center">
           <TimeUnit value={timeLeft.days} label="DAYS" />
           <Separator />
           <TimeUnit value={timeLeft.hours} label="HRS" />
@@ -94,17 +96,24 @@ export function LaunchCountdown() {
           <TimeUnit value={timeLeft.minutes} label="MIN" />
           <Separator />
           <TimeUnit value={timeLeft.seconds} label="SEC" />
+          <Separator />
+          <TimeUnit value={timeLeft.milliseconds} label="MS" size="small" />
         </div>
       </div>
     </motion.div>
   );
 }
 
-function TimeUnit({ value, label }: { value: number; label: string }) {
+function TimeUnit({ value, label, size = 'normal' }: { value: number; label: string; size?: 'normal' | 'small' }) {
+  const isSmall = size === 'small';
+  const padding = label === 'MS' ? 3 : 2;
+  
   return (
     <div className="flex flex-col items-center gap-1">
       <motion.div
-        className="text-red-500 px-2 py-1 md:px-3 md:py-1.5 rounded-lg backdrop-blur-sm bg-red-950/30 border border-red-500/50"
+        className={`text-red-500 rounded-lg backdrop-blur-sm bg-red-950/30 border border-red-500/50 ${
+          isSmall ? 'px-1 py-0.5 md:px-2 md:py-1 text-sm' : 'px-2 py-1 md:px-3 md:py-1.5'
+        }`}
         style={{
           textShadow: '0 0 15px rgba(239, 68, 68, 0.9)',
         }}
@@ -123,10 +132,10 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
           repeatDelay: Math.random() * 0.3,
         }}
       >
-        {String(value).padStart(2, '0')}
+        {String(value).padStart(padding, '0')}
       </motion.div>
       <motion.div
-        className="text-red-400/70 text-xs"
+        className={`text-red-400/70 ${isSmall ? 'text-[10px]' : 'text-xs'}`}
         animate={{
           opacity: [0.7, 0.3, 0.7],
         }}

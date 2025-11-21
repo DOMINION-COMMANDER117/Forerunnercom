@@ -3,17 +3,23 @@ import { Scale, Shield, Share2, Mail, ShieldAlert } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
+  currentPage?: string;
 }
 
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer({ onNavigate, currentPage }: FooterProps) {
+  const isSettingsPage = currentPage === 'settings';
+  
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 p-6">
+    <footer className="fixed bottom-0 left-0 right-0 z-50 p-6 pointer-events-none">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative rounded-2xl overflow-hidden"
+          animate={{ 
+            opacity: isSettingsPage ? 0 : 1, 
+            y: isSettingsPage ? 20 : 0 
+          }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="relative rounded-2xl overflow-hidden pointer-events-auto"
         >
           <div className="absolute inset-0 backdrop-blur-3xl rounded-2xl" />
           <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{

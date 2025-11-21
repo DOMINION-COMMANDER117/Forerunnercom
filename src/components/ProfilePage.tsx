@@ -143,7 +143,6 @@ export function ProfilePage() {
           <h1 className="text-white text-4xl mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
             {currentUser.username}
           </h1>
-          <p className="text-white/70">{currentUser.email}</p>
           
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-8 max-w-2xl mx-auto">

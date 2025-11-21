@@ -28,7 +28,7 @@ const containsProfanity = (text: string): boolean => {
 };
 
 export function MessagesPage() {
-  const { currentUser, users, isAccountLocked } = useUser();
+  const { currentUser, users } = useUser();
   const [messages, setMessages] = useState<Message[]>([]);
   const [messageText, setMessageText] = useState('');
   const [lastMessageTime, setLastMessageTime] = useState<number>(0);
@@ -36,7 +36,7 @@ export function MessagesPage() {
   const [blink, setBlink] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const locked = isAccountLocked();
+  const locked = false; // Messages are never locked now
   const isDarkMode = currentUser?.settings.darkMode || false;
   const COOLDOWN_SECONDS = 5;
 
